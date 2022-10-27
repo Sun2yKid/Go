@@ -91,3 +91,32 @@ A struct is a collection of fields.
 Struct fields are accessed using a dot.
 
 Struct fields can be accessed through a struct pointer whth`(*p).X`. to simplify, just write `p.X`, without th explicit dereferece.
+
+## Arrays
+the type `[n]T` is an array of `n` values of type T.
+> var a [10] int   // declares a variable `a` as an array of ten ingegers.
+An array's length is part of its type, so arrays cannot be resized.
+
+## Slices
+A slice is a dynamically-sized.
+The type `[]T` is a slice with elemeents of type T.
+
+changing the elements of a slice modifies the corresponding elements of its underlying array.
+
+slice literals:
+> []bool{true, true, false}
+This creates the arrary `[3]bool{true, true, false}`, then builds a slice that references it.
+
+A slice has both a length and a capacity.
+
+The length of a slice is the number of elements it contains.
+
+The capacity of a slice is the number of elements in the underlying array, counting from the first element in the slice.
+
+The zro value of a slice is nil.
+
+Slices can be created with the built-in mak function; this is how you create dynamically-sized arrays.
+> b := make([]int, 0, 5)  // len(b)=0, cap(b)=5
+
+Go provides a built-in `append` function.
+> func append(s []T, vs ...T) []T

@@ -6,6 +6,7 @@ import (
 	"math/cmplx"
 	"math/rand"
 	"runtime"
+	"strings"
 	"time"
 )
 
@@ -146,6 +147,111 @@ func main() {
 
 	fmt.Println(v1, p_v2, v2, v3)
 
+	// arrays
+	var a1 [2]string
+	a1[0] = "hello"
+	a1[1] = "world"
+	fmt.Println(a1, a1[0], a1[1])
+
+	primes := [6]int{2, 3, 5, 7, 11, 13}
+	fmt.Println(primes)
+
+	// slices
+	var s1 []int = primes[1:4]
+	fmt.Println(s1)
+
+	names := [4]string{
+		"John",
+		"Paul",
+		"George H",
+		"Ringo",
+	}
+	fmt.Println(names)
+
+	a3 := names[0:2]
+	b3 := names[1:3]
+	fmt.Println(a3, b3)
+
+	b3[0] = "XXX"
+	fmt.Println(a3, b3, names)
+
+	q := []int{2, 3, 5, 7, 11, 13}
+	fmt.Println(q)
+	printSlice(q)
+
+	// slice the slice to give it zero length
+	q = q[:0]
+	printSlice(q)
+
+	// extend its length
+	q = q[:4]
+	printSlice(q)
+
+	// Drop its first two values
+	q = q[2:]
+	printSlice(q)
+
+	r := []bool{true, false, true, true, false, true}
+	fmt.Println(r)
+
+	s2 := []struct {
+		i int
+		b bool
+	}{
+		{2, true},
+		{3, false},
+		{5, true},
+		{7, true},
+		{11, false},
+		{13, true},
+	}
+	fmt.Println(s2)
+
+	// nil slices
+	var s3 []int
+	printSlice(s3)
+	if s3 == nil {
+		fmt.Println("nil! slice")
+	}
+
+	// create slice with make
+	printSlice(make([]int, 5))
+	printSlice(make([]int, 0, 5))
+	printSlice(make([]int, 0, 5)[:2])
+	printSlice(make([]int, 0, 5)[2:5])
+
+	//slice of slice
+	board := [][]string{
+		[]string{"_", "_", "_"},
+		[]string{"_", "_", "_"},
+		[]string{"_", "_", "_"},
+	}
+	board[0][0] = "X"
+	board[2][2] = "O"
+	board[1][2] = "X"
+	board[1][0] = "O"
+	board[0][2] = "X"
+
+	for i :=0; i < len(board); i++ {
+		fmt.Printf("%s\n", strings.Join(board[i], " "))
+	}
+
+	// append to a slice
+	var s_a []int
+	fmt.Println(s_a == nil)
+	printSlice(s_a)
+
+	// append works on nil slices
+	s_a = append(s_a, 0)
+	printSlice(s_a)
+
+	// slice grows as needed.
+	s_a = append(s_a, 1)
+	printSlice(s_a)
+
+	s_a = append(s_a, 2, 3, 4)
+	printSlice(s_a)
+
 }
 
 func add(x, y int) int {
@@ -186,4 +292,8 @@ func Sqrt(x float64) float64 {
 		z -= (z*z - x) / (2 * z)
 	}
 	return z
+}
+
+func printSlice(s []int) {
+	fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
 }
