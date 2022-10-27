@@ -18,6 +18,18 @@ var (
 	z      complex128 = cmplx.Sqrt(-5 + 12i)
 )
 
+type Vertex struct {
+	X int
+	Y int
+}
+
+var (
+	v1 = Vertex{1, 2}     // has type Vertex
+	v2 = Vertex{X: 1}     // Y:0 is implicit
+	v3 = Vertex{}         // X:0 and Y:0
+	p_v2 = &Vertex{1, 2}  // has type *Vertex
+)
+
 func main() {
 	fmt.Println("My favorite number is", rand.Intn(10))
 	fmt.Println(add(58, 85))
@@ -108,6 +120,32 @@ func main() {
 		defer fmt.Println(i)
 	}
 	fmt.Println("done")
+
+	// pointer
+	i, j := 42, 2701
+	p := &i
+	fmt.Println(i, p, *p)
+	*p = 21
+	fmt.Println(i, p, *p)
+
+	p2 := &j
+	fmt.Println(j, p2, *p2)
+	*p2 = *p2 / 37
+	fmt.Println(j, p2, *p2)
+
+	// struct
+	fmt.Println(Vertex{1, 2})
+	v := Vertex{1, 2}
+	v.X = 4
+	fmt.Println(v)
+
+	p_v := &v
+	fmt.Println(p_v, (*p_v).X, p_v.X)
+	p_v.Y = 1e9
+	fmt.Println(v)
+
+	fmt.Println(v1, p_v2, v2, v3)
+
 }
 
 func add(x, y int) int {
