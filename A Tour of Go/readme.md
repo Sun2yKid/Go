@@ -123,3 +123,21 @@ Go provides a built-in `append` function.
 
 ## Range
 the range form of the for loop iterates over a slice or map.
+
+
+## Maps
+A map maps keys to values.
+
+The zero value of a map is nil. 
+
+Insert or update an element in map `m`:
+> m[key] = elem
+
+retrieve and element:
+> elem = m[key]
+
+delete an element:
+> delete(m, key)
+
+test that a key is present with a two-value assignment, if key is in m , ok is true, else ok is false and elem is the zero value for the map's element type. :
+> elem, ok := m[key]

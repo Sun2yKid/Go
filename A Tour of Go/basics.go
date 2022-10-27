@@ -33,6 +33,12 @@ var (
 
 var v_pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
 
+type Vertex2 struct {
+	Lat, Long float64
+}
+
+var m map[string]Vertex2
+
 func main() {
 	fmt.Println("My favorite number is", rand.Intn(10))
 	fmt.Println(add(58, 85))
@@ -272,19 +278,66 @@ func main() {
 	ret := Pic(2, 3)
 	fmt.Println(ret)
 
+	// maps
+	m = make(map[string]Vertex2)
+	m["Bell Labs"] = Vertex2{
+		40.68433, -74.39967,
+	}
+	fmt.Println(m["Bell Labs"])
+
+	var m2 = map[string]Vertex2{
+		"Bell Labs": Vertex2{
+			40.68433, -74.39967,
+		},
+		"Google": {   // omit the type, not like above
+			37.42202, -122.08408,
+		},
+	}
+	fmt.Println(m2)
+
+	m3 := make(map[string]int)
+
+	m3["answer"] = 42
+	fmt.Println("m3", m3["answer"])
+
+	m3["answer"] = 48
+	fmt.Println("m3", m3["answer"])
+
+	v2, ok := m3["answer"]
+	fmt.Println(v2, "present?", ok)
+
+	delete(m3, "answer")
+	fmt.Println("m3", m3["answer"])
+
+	v2, ok = m3["answer"]
+	fmt.Println(v2, "present?", ok)
+
+	ret2 := WordCount("I am learning Go!")
+	fmt.Println("ret2", ret2)
+
 
 }
 
 // exercise for slices
 func Pic(dx, dy int) [][]uint8 {
-	ret := make([][]uint8, dy)
-	for i :=0 ; i<dy; i++ {
-		ret[i] = make([]uint8, dx)
-		for j:=0; j<dx; j++ {
-			ret[i][j] = uint8(i^j)
+	pic := make([][]uint8, dy)
+	for i := range pic {
+		pic[i] = make([]uint8, dx)
+		for j := range pic[i] {
+			pic[i][j] = uint8(i^j)
 		}
 	}
-	return ret
+	return pic
+}
+
+// exercise for maps
+func WordCount(s string) map[string]int {
+	slice_s := strings.Fields(s)
+	result := make(map[string]int)
+	for _, v := range(slice_s) {
+		result[v] += 1
+	}
+	return result
 }
 
 func add(x, y int) int {
