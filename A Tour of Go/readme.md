@@ -120,3 +120,6 @@ Slices can be created with the built-in mak function; this is how you create dyn
 
 Go provides a built-in `append` function.
 > func append(s []T, vs ...T) []T
+
+## Range
+the range form of the for loop iterates over a slice or map.

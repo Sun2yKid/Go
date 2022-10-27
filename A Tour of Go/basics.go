@@ -25,11 +25,13 @@ type Vertex struct {
 }
 
 var (
-	v1 = Vertex{1, 2}     // has type Vertex
-	v2 = Vertex{X: 1}     // Y:0 is implicit
-	v3 = Vertex{}         // X:0 and Y:0
-	p_v2 = &Vertex{1, 2}  // has type *Vertex
+	v1   = Vertex{1, 2}  // has type Vertex
+	v2   = Vertex{X: 1}  // Y:0 is implicit
+	v3   = Vertex{}      // X:0 and Y:0
+	p_v2 = &Vertex{1, 2} // has type *Vertex
 )
+
+var v_pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
 
 func main() {
 	fmt.Println("My favorite number is", rand.Intn(10))
@@ -215,7 +217,8 @@ func main() {
 	}
 
 	// create slice with make
-	printSlice(make([]int, 5))
+	printSlice(make([]int, 5))   // len=5 cap=5 [0 0 0 0 0]
+	printSSlice("make", make([]int, 5))
 	printSlice(make([]int, 0, 5))
 	printSlice(make([]int, 0, 5)[:2])
 	printSlice(make([]int, 0, 5)[2:5])
@@ -232,7 +235,7 @@ func main() {
 	board[1][0] = "O"
 	board[0][2] = "X"
 
-	for i :=0; i < len(board); i++ {
+	for i := 0; i < len(board); i++ {
 		fmt.Printf("%s\n", strings.Join(board[i], " "))
 	}
 
@@ -252,6 +255,36 @@ func main() {
 	s_a = append(s_a, 2, 3, 4)
 	printSlice(s_a)
 
+	// range
+	for i, v := range v_pow {
+		fmt.Printf("2**%d = %d\n", i, v)
+	}
+
+	v_pow2 := make([]int, 10)  // len=10 cap=10 [0 0 0 0 0 0 0 0 0 0]
+	printSSlice("v_pow2", v_pow2)
+	for i := range v_pow2 {  // only want the index, omit the second variable
+		v_pow2[i] = 1 << uint(i)  // == 2**i
+	}
+	for _, v := range v_pow2 {
+		fmt.Printf("%d\n", v)
+	}
+
+	ret := Pic(2, 3)
+	fmt.Println(ret)
+
+
+}
+
+// exercise for slices
+func Pic(dx, dy int) [][]uint8 {
+	ret := make([][]uint8, dy)
+	for i :=0 ; i<dy; i++ {
+		ret[i] = make([]uint8, dx)
+		for j:=0; j<dx; j++ {
+			ret[i][j] = uint8(i^j)
+		}
+	}
+	return ret
 }
 
 func add(x, y int) int {
@@ -296,4 +329,8 @@ func Sqrt(x float64) float64 {
 
 func printSlice(s []int) {
 	fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
+}
+
+func printSSlice(st string, s []int) {
+	fmt.Printf("%s: len=%d cap=%d %v\n", st, len(s), cap(s), s)
 }
