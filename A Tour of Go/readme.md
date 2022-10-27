@@ -141,3 +141,7 @@ delete an element:
 
 test that a key is present with a two-value assignment, if key is in m , ok is true, else ok is false and elem is the zero value for the map's element type. :
 > elem, ok := m[key]
+
+## Function closures
+Go functions may be closures. A closure is a function value that references variables from outside its body. The function may access and assign to the referenced variables; in this sense the function is "bound" to the variables.
+

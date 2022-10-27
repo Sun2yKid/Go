@@ -315,7 +315,25 @@ func main() {
 	ret2 := WordCount("I am learning Go!")
 	fmt.Println("ret2", ret2)
 
+	// function values
+	hypot := func(x, y float64) float64 {
+		return math.Sqrt(x*x + y*y)
+	}
+	fmt.Println(hypot(5, 12))
 
+	fmt.Println(compute(hypot))
+	fmt.Println(compute(math.Pow))
+
+	// function closures
+	pos, neg := adder(), adder()
+	for i:=0; i < 10; i++ {
+		fmt.Println(pos(i), neg(-2-i))
+	}
+
+	fi := fibonacci()
+	for i:=0; i < 10; i++ {
+		fmt.Println(fi())
+	}
 }
 
 // exercise for slices
@@ -338,6 +356,29 @@ func WordCount(s string) map[string]int {
 		result[v] += 1
 	}
 	return result
+}
+
+func compute(fn func(float64, float64) float64) float64 {
+	return fn(3, 4)
+}
+
+// function closures
+func adder() func(int) int {
+	sum := 0
+	return func(x int) int {
+		sum += x
+		return sum
+	}
+}
+
+// exercise: Fibonacci closure
+func fibonacci() func() int {
+	a := 0
+	b := 1
+	return func() int {
+		a, b = b, a+b
+		return b
+	}
 }
 
 func add(x, y int) int {
