@@ -145,3 +145,43 @@ test that a key is present with a two-value assignment, if key is in m , ok is t
 ## Function closures
 Go functions may be closures. A closure is a function value that references variables from outside its body. The function may access and assign to the referenced variables; in this sense the function is "bound" to the variables.
 
+
+## Methods
+Go does not have classes. Howerver, you can define methods on types.
+
+A method is a function with a special `receiver` argument.
+
+The receiver appears in its own argument list between the `func` keyword and the method name.
+
+```
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+type Vertex struct {
+	X, Y float64
+}
+
+func (v Vertex) Abs() float64 {
+	return math.Sqrt(v.X*v.X + v.Y*v.Y)
+}
+
+func main() {
+	v := Vertex{3, 4}
+	fmt.Println(v.Abs())
+}
+```
+
+Remember: a method is just a function with a receiver argument.
+
+You can declare a method on non-struct types, too.
+
+You can only declare a method with a receiver whose type is defined in the same package as the method. You cannot declare a method with a receiver whose type is defined in another package (which includes the built-in types such as int).
+
+### pointer receiver
+two reasons to use a pointer receiver:
+* the method can modify the value that its receiver points to.
+* to avoid copying the value on each method call. 
