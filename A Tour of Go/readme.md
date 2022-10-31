@@ -185,3 +185,11 @@ You can only declare a method with a receiver whose type is defined in the same 
 two reasons to use a pointer receiver:
 * the method can modify the value that its receiver points to.
 * to avoid copying the value on each method call. 
+
+
+## Interfaces
+An `interface type` is defined as a set of method signatures.
+
+A value of interface type can hold any value that implements these methods.
+
+Interfaces are implemented implicity. A type implements an interface by implementing its methods. There is no explicit declarationl of intent.
