@@ -193,3 +193,21 @@ An `interface type` is defined as a set of method signatures.
 A value of interface type can hold any value that implements these methods.
 
 Interfaces are implemented implicity. A type implements an interface by implementing its methods. There is no explicit declarationl of intent.
+
+
+## Reader
+The io package specifies the io.Reader interface, which represents the read end of a stream of data.
+
+The `io.Reader` interface has a Read method:
+> func (T) Read(b []byte) (n int, err error)
+
+## Type parameters
+Go functions can be written to work on multiple types using type parameters. The type parameters of a function appear between brackets, before the function's arguments.
+
+> func Index[T comparable](s []T, x T) int
+
+This declaration means that s is a slice of any type T that fulfills the built-in constraint comparable. x is also a value of the same type.
+
+comparable is a useful constraint that makes it possible to use the == and != operators on values of the type. In this example, we use it to compare a value to all slice elements until a match is found. This Index function works for any type that supports comparison.
+
+
