@@ -217,7 +217,7 @@ A goroutine is a lightweight thread managed by the Go runtime.
 start a new goroutine running
 
 ## Channels
-Channels are a typed conduit through which you can send and receive values with the channel operator, `<-`
+Channels are a typed conduit through which you can send and receive values with the channel operator, `<-`. // communication among goroutines.
 ```
 ch <- v    // Send v to channel ch.
 v := <- ch // Receive from ch, and assign value to v.
@@ -239,3 +239,9 @@ A sender can close a channel to indicate that not more values will be sent. Rece
 ok is false if there are no more values to receive and the channel is closed.
 
 The loop `for i := range c` receives values from the channel repeatedly until it is closed.
+
+
+## Select
+The select statement lets a goroutine wait on multiple communication operations.
+
+A select blocks until one of its case can run, then it executes that case. It choosees one at random if multiple are ready.
