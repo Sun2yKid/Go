@@ -211,3 +211,31 @@ This declaration means that s is a slice of any type T that fulfills the built-i
 comparable is a useful constraint that makes it possible to use the == and != operators on values of the type. In this example, we use it to compare a value to all slice elements until a match is found. This Index function works for any type that supports comparison.
 
 
+## Goroutines
+A goroutine is a lightweight thread managed by the Go runtime.
+> go f(x, y, z)
+start a new goroutine running
+
+## Channels
+Channels are a typed conduit through which you can send and receive values with the channel operator, `<-`
+```
+ch <- v    // Send v to channel ch.
+v := <- ch // Receive from ch, and assign value to v.
+```
+
+channels must be created before use:
+> ch := make(chan int)
+
+By default, sends and receives block until the other side is ready. This allows goroutines to synchronize without explict locks or condition variables.
+
+### Buffered Channels
+> ch := make(chan int, 100)
+Sends to a buffered channel block only when the buffer is full. Receives blocks when the buffer is empty.
+
+### Range and close
+A sender can close a channel to indicate that not more values will be sent. Receivers can test whether a channel has been closed by assigning a second parameter to the receive expression
+> v, ok := <- ch
+
+ok is false if there are no more values to receive and the channel is closed.
+
+The loop `for i := range c` receives values from the channel repeatedly until it is closed.
