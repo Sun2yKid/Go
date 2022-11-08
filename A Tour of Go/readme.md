@@ -113,7 +113,7 @@ The length of a slice is the number of elements it contains.
 
 The capacity of a slice is the number of elements in the underlying array, counting from the first element in the slice.
 
-The zro value of a slice is nil.
+The zero value of a slice is nil.
 
 Slices can be created with the built-in mak function; this is how you create dynamically-sized arrays.
 > b := make([]int, 0, 5)  // len(b)=0, cap(b)=5

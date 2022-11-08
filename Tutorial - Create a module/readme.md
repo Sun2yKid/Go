@@ -24,3 +24,9 @@ As an alternative, if you already have a directory like $HOME/bin in your shell 
 or
 
 > $ go env -w GOBIN=C:\path\to\your\bin
+
+check go env
+> $ go env
+
+check go version
+> $ go version
