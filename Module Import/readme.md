@@ -8,3 +8,7 @@ go module是Go1.11版本之后官方推出的版本管理工具，并且从Go1.1
 这里就详细介绍下如何使用go module导入本地包。
 
 
+
+# Using Go Modules
+https://go.dev/blog/using-go-modules
+
