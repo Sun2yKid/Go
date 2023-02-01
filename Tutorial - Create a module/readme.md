@@ -21,12 +21,22 @@ As an alternative, if you already have a directory like $HOME/bin in your shell 
 
 > $ go env -w GOBIN=/path/to/your/bin
 
-or
+or in Windows OS
 
 > $ go env -w GOBIN=C:\path\to\your\bin
 
+unset a variable
+> go env -u GOBIN
+
 check go env
 > $ go env
+
+install the program
+> go install "module name"
+
+This command builds the hello command, producing an executable binary. It then installs that binary as $HOME/go/bin/hello (or, under Windows, %USERPROFILE%\go\bin\hello.exe).
+
+The install directory is controlled by the GOPATH and GOBIN environment variables. If GOBIN is set, binaries are installed to that directory. If GOPATH is set, binaries are installed to the bin subdirectory of the first directory in the GOPATH list. Otherwise, binaries are installed to the bin subdirectory of the default GOPATH ($HOME/go or %USERPROFILE%\go).
 
 check go version
 > $ go version

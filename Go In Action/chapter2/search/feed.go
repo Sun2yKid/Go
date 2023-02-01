@@ -9,7 +9,7 @@ const dataFile = "data/data.json"
 
 // Feed contains information we need to process a feed.
 type Feed struct {
-	Name string `json:"site"`
+	Name string `json:"site"` // `反引号里的部分被称作标记（tag），这个标记描述了JSON解码的源数据，每个标记将结构体里字段对应到json文档里指定名字的字段
 	URI  string `json:"link"`
 	Type string `json:"type"`
 }

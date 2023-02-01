@@ -133,7 +133,7 @@ The zero value of a map is nil.
 Insert or update an element in map `m`:
 > m[key] = elem
 
-retrieve and element:
+retrieve an element:
 > elem = m[key]
 
 delete an element:
@@ -192,7 +192,7 @@ An `interface type` is defined as a set of method signatures.
 
 A value of interface type can hold any value that implements these methods.
 
-Interfaces are implemented implicity. A type implements an interface by implementing its methods. There is no explicit declarationl of intent.
+Interfaces are implemented implicitly. A type implements an interface by implementing its methods. There is no explicit declaration of intent.
 
 
 ## Reader
