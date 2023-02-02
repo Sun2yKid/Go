@@ -1,0 +1,6 @@
+go 1.19
+
+use (
+	./example
+	./hello // thells Go that the module in the hello directory should be main modules when doing a build.
+)
