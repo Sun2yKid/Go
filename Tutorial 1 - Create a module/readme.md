@@ -1,5 +1,7 @@
 https://go.dev/doc/tutorial/create-module
 
+Go code is grouped into packages, and packages are grouped into modules.
+
 To enable dependency tracking for your code by creating a go.mod file, run
 > go mod init module_name
 
