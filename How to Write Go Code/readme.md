@@ -1,3 +1,6 @@
+# How to Write Go Code
+https://go.dev/doc/code
+
 ## Code organization
 
 Go programs are organized into packages. 
@@ -20,6 +23,13 @@ You can use the go env command to portably set the default value for an environm
 To unset a variable previously set by go env -w, use go env -u:
 > go env -u GOBIN
 
+
+For added convenience, we'll add the install directory to our PATH to make running binaries easy:
+```
+# Windows users should consult https://github.com/golang/go/wiki/SettingGOPATH
+# for setting %PATH%.
+$ export PATH=$PATH:$(dirname $(go list -f '{{.Target}}' .))
+```
 
 The `go mod tidy` command adds missing module requirements for imported packages and removes requirements on modules that aren't used anymore.
 
