@@ -33,6 +33,8 @@ Add to OS env PATH
 > export PATH=$PATH:/Users/username/go/bin
 
 ## goimports
+https://pkg.go.dev/golang.org/x/tools/cmd/goimports
+
 install
 > go install golang.org/x/tools/cmd/goimports@latest
 
