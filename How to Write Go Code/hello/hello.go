@@ -5,7 +5,7 @@ import (
 
 	"example/user/hello/morestrings"
 	"github.com/google/go-cmp/cmp"
-	"github.com/Sun2yKid/Go/Module-Import/myremotepackage"
+	"github.com/Sun2yKid/Go/Module-Import/myremotepackage/mypackage"
 )
 
 func main() {
@@ -13,5 +13,5 @@ func main() {
 	fmt.Println(morestrings.ReverseRunes("How to Write Go Code: Hello, world."))
 	fmt.Println(cmp.Diff("Hello World", "Hello Go"))
 
-	fmt.Println(myremotepackage.New())
+	mypackage.New()
 }
