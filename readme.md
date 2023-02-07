@@ -18,6 +18,12 @@ Visit the documentation page for a set of in-depth articles about the Go languag
 
 https://go.dev/doc/#articles
 
+
+Using Go Modules
+
+https://go.dev/blog/using-go-modules
+
+
 ## SettingGOPATH
 https://github.com/golang/go/wiki/SettingGOPATH
 > go env -w GOPATH=/Users/username/go

@@ -115,7 +115,7 @@ The capacity of a slice is the number of elements in the underlying array, count
 
 The zero value of a slice is nil.
 
-Slices can be created with the built-in mak function; this is how you create dynamically-sized arrays.
+Slices can be created with the built-in make function; this is how you create dynamically-sized arrays.
 > b := make([]int, 0, 5)  // len(b)=0, cap(b)=5
 
 Go provides a built-in `append` function.
@@ -147,7 +147,7 @@ Go functions may be closures. A closure is a function value that references vari
 
 
 ## Methods
-Go does not have classes. Howerver, you can define methods on types.
+Go does not have classes. However, you can define methods on types.
 
 A method is a function with a special `receiver` argument.
 
