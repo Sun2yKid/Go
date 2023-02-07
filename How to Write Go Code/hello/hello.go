@@ -6,6 +6,7 @@ import (
 	"example/user/hello/morestrings"
 	"github.com/google/go-cmp/cmp"
 	"github.com/Sun2yKid/Go/Module-Import/myremotepackage/mypackage"
+    "mylocalpackage"
 )
 
 func main() {
@@ -14,4 +15,5 @@ func main() {
 	fmt.Println(cmp.Diff("Hello World", "Hello Go"))
 
 	mypackage.New()
+	mylocalpackage.New()
 }

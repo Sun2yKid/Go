@@ -11,6 +11,13 @@ A *module* is a collection of related Go packages that are released together. A 
 
 An *import path* is a string used to import a package. A package's import path is its module path joined with its subdirectory within the module. 
 
+> go list -m all
+
+The command go list -m all lists the current module and all its dependencies
+
+> go list -m -versions module
+
+list the available tagged versions of that module
 
 > go install example/user/hello  | go install . | go install
 
