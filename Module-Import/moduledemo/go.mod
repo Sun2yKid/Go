@@ -3,6 +3,6 @@ module mymoduledemo
 go 1.19
 
 
-require "mypackage" v0.0.0
+require "mylocalpackage" v0.0.0
 
-replace mypackage => ../mypackage
+replace mylocalpackage => ../mylocalpackage

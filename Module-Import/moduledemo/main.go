@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"mypackage"
+	"mylocalpackage"
 )
 func main() {
-	mypackage.New()
+	mylocalpackage.New()
 	fmt.Println("main")
 }
